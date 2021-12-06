@@ -11,3 +11,5 @@
 - 5번
 ![image](https://user-images.githubusercontent.com/76835313/144795512-d296b689-9ac7-4ce7-88eb-c150140ed8d3.png)
 ![image](https://user-images.githubusercontent.com/76835313/144795517-efa3234a-cf9b-470b-943d-7364325ff4ae.png)
+- 6번
+![image](https://user-images.githubusercontent.com/76835313/144798062-10150b41-c65f-4138-857c-f49d647b8df0.png)
