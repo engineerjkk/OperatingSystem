@@ -96,3 +96,102 @@
           pthread_exit(0);
         }
 
+1. 어떻게 동작하는지
+- deadlock_sleep.c 함수에는 do_work_one함수와 do_work_two 함수가 있다. 
+- 프로그램이 가만히 있게된다.
+2. 출력이 왜 그렇게 나오는지 이유
+- 뮤텍스 때문에 dead lock이 걸리는 상황을 보여준다.
+- 20초 sleep을 주면서 반드시 dead lock이 걸리는 상황
+3. 소크도으에서 설명된 함수들의 의미
+- 첫번째 함수인 do_work_one 함수에서 first와 second를 lock을 걸고 20초뒤 다시 lcok을 걸려고 하니 do_work_two함수에서 역시 second_mutex와 first_mutex가 lock이 걸려있다.
+- 그래서 모두 아무것도 하지 못하게 된다. 
+
+                Deadlock_nosleep.c
+                /**
+                 * A pthread program illustrating deadlock.
+                 *
+                 * Usage
+                 *      gcc deadlock.c -lpthread
+                 *      ./a.out
+                 *
+                 * Figure 7.1
+                 *
+                 * @author Gagne, Galvin, Silberschatz
+                 * Operating System Concepts  - Seventh Edition
+                 * Copyright John Wiley & Sons - 2005.
+                 */
+
+                #include <pthread.h>
+                #include <stdio.h>
+
+                pthread_mutex_t first_mutex;
+                pthread_mutex_t second_mutex;
+
+                void *do_work_one(void *param);
+                void *do_work_two(void *param);
+
+                int main(int argc, char *argv[])
+                {
+                        pthread_t tid1, tid2; /* the thread identifiers */
+                        pthread_attr_t attr; /* set of attributes for the thread */
+
+                        /* get the default attributes */
+                        pthread_attr_init(&attr);
+
+                        /* create the mutex locks */
+                        pthread_mutex_init(&first_mutex, NULL);
+                        pthread_mutex_init(&second_mutex, NULL);
+
+                        /* create the threads */
+                        pthread_create(&tid1  , &attr, do_work_one  , NULL);
+                        pthread_create(&tid2, &attr, do_work_two, NULL);
+
+                        /* now wait for the thread to exit */
+                        pthread_join(tid1, NULL);
+                        pthread_join(tid2, NULL);
+
+                        printf("Parent DONE\n");
+
+                        /* destroy the mutex before exiting */
+                        pthread_mutex_destroy(&first_mutex);
+                        pthread_mutex_destroy(&second_mutex);
+                }
+
+                void *do_work_one(void *param)
+                {
+                        pthread_mutex_lock(&first_mutex);  
+                        pthread_mutex_lock(&second_mutex);
+                        /**
+                         * Do some work in critical section  
+                         */
+                        pthread_mutex_unlock(&second_mutex);
+                        pthread_mutex_unlock(&first_mutex);  
+
+                        pthread_exit(0);
+                }
+
+                void *do_work_two(void *param)
+                {
+                        pthread_mutex_lock(&second_mutex  );
+                        pthread_mutex_lock(&first_mutex);
+                        /**
+                         * Do some work in critical section
+                         *
+                         * We can ensure deadlock by having this thread sleep before releasing the lock. sleep(20);
+                         */
+
+                        pthread_mutex_unlock(&first_mutex);
+                        pthread_mutex_unlock(&second_mutex);
+
+                        pthread_exit(0);
+                }
+1. 어떻게 동작하는지
+- deadlock이 걸리지 않는 거처럼 보이며 동작한다.
+- 그리고 모든 함수가 종료되고 프린트 함수가 동작하며 Parent Done을 출력된다.
+2. 출력이 왜 그렇게 나오는지 이유
+- deadlock이 걸릴 가능성이있다.
+- 첫번째 함수에서 first mutex와 second mutex에 lock을 걸었는데 두번째 함수에서 역시 second_mutex와 first_mutex에 lock이 걸려있기 때문이다.
+3. 소스코드에서 설명된 함수들의 의미
+- do_work_one에서 pthread_mutex_lock(&first_mutex)는 first mutex를 가지고 다른놈이 lock을 걸지 않았다면 lock을 걸 수 있다. 그 뜻은 내가 차지하는 순간 다른 쓰레드가 차지하지 못하게 한다.
+- 그 이후 critical section을 넣어서 프린터와 같은 I/O접근하는 함수를 위치시킨다.
+- 다 쓰고나면 pthread_mutex_unlock함수를 사용하여 다시 unlock을 해준다. 
