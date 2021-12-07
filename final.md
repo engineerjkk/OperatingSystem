@@ -1,6 +1,9 @@
 - 2번
 ![image](https://user-images.githubusercontent.com/76835313/144781199-72180a78-6256-4087-bcaa-078d2e658fb1.png)
 ![image](https://user-images.githubusercontent.com/76835313/144781209-9183c427-5b1b-40b8-8293-381aa5d000f7.png)
+- 라운드 로빈 수정
+![image](https://user-images.githubusercontent.com/76835313/144959043-786d65c8-7fe1-45d7-85ed-f54c01ed47f9.png)
+
 - Feedbock 알고리즘으로 계산 시
 ![image](https://user-images.githubusercontent.com/76835313/144955300-8966c569-588f-47a0-835d-b57f1878c5a1.png)
 
