@@ -1,7 +1,9 @@
 - 1번
+![image](https://user-images.githubusercontent.com/76835313/144991943-4515822c-44b1-4311-a744-675cfda5f053.png)
 ![image](https://user-images.githubusercontent.com/76835313/144976374-2054f089-ca46-4e15-bc6a-0335033aee2f.png)
 
 - 2번
+![image](https://user-images.githubusercontent.com/76835313/144991979-47b3263e-014f-47d2-9a54-a9d417a7aa44.png)
 ![image](https://user-images.githubusercontent.com/76835313/144781199-72180a78-6256-4087-bcaa-078d2e658fb1.png)
 ![image](https://user-images.githubusercontent.com/76835313/144781209-9183c427-5b1b-40b8-8293-381aa5d000f7.png)
 - 라운드 로빈 수정
@@ -11,18 +13,24 @@
 ![image](https://user-images.githubusercontent.com/76835313/144955300-8966c569-588f-47a0-835d-b57f1878c5a1.png)
 
 - 3번
+![image](https://user-images.githubusercontent.com/76835313/144992016-86020e24-a9ea-4447-ab43-5af1179859d2.png)
 ![image](https://user-images.githubusercontent.com/76835313/144749464-d222f863-356e-4b8a-b4b5-79ed28c5b5c2.png)
 ![image](https://user-images.githubusercontent.com/76835313/144844740-3ff2b4a3-c6ce-4404-bb57-520ca2c4f96a.png)
 
 - 4번
+![image](https://user-images.githubusercontent.com/76835313/144992053-1ec3d256-0145-4b13-9027-006bfd0674aa.png)
 ![image](https://user-images.githubusercontent.com/76835313/144788968-1318b928-388f-4284-9b7e-1e0ec2ad149f.png)
 ![image](https://user-images.githubusercontent.com/76835313/144788974-ae359bdd-7b76-47e4-b0cc-9c62b771d3bb.png)
 - 5번
+![image](https://user-images.githubusercontent.com/76835313/144992091-2b835852-ba3c-42c7-bcfe-9d7d04f67254.png)
 ![image](https://user-images.githubusercontent.com/76835313/144795512-d296b689-9ac7-4ce7-88eb-c150140ed8d3.png)
 ![image](https://user-images.githubusercontent.com/76835313/144795517-efa3234a-cf9b-470b-943d-7364325ff4ae.png)
 - 6번
+![image](https://user-images.githubusercontent.com/76835313/144992115-96740fc6-d8cb-4b47-93c0-aece40dffe76.png)
 ![image](https://user-images.githubusercontent.com/76835313/144798062-10150b41-c65f-4138-857c-f49d647b8df0.png)
 - 7번
+![image](https://user-images.githubusercontent.com/76835313/144992137-79da79df-a93a-4a2c-ac4d-5743e75e89bf.png)
+
 
         Deadlock_sleep.c
         -bash - 3.2$ cat deadlock_sleep.c
@@ -204,3 +212,5 @@
 - do_work_one에서 pthread_mutex_lock(&first_mutex)는 first mutex를 가지고 다른놈이 lock을 걸지 않았다면 lock을 걸 수 있다. 그 뜻은 내가 차지하는 순간 다른 쓰레드가 차지하지 못하게 한다.
 - 그 이후 critical section을 넣어서 프린터와 같은 I/O접근하는 함수를 위치시킨다.
 - 다 쓰고나면 pthread_mutex_unlock함수를 사용하여 다시 unlock을 해준다. 
+- 8번
+![image](https://user-images.githubusercontent.com/76835313/144992155-f6ea429e-5dc5-4de7-8a5a-12931e33984d.png)
