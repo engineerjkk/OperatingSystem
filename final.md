@@ -1,3 +1,6 @@
+- 1번
+![image](https://user-images.githubusercontent.com/76835313/144976374-2054f089-ca46-4e15-bc6a-0335033aee2f.png)
+
 - 2번
 ![image](https://user-images.githubusercontent.com/76835313/144781199-72180a78-6256-4087-bcaa-078d2e658fb1.png)
 ![image](https://user-images.githubusercontent.com/76835313/144781209-9183c427-5b1b-40b8-8293-381aa5d000f7.png)
